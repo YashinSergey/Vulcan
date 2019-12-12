@@ -1,16 +1,15 @@
 package com.example.vulcan.ui;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,14 +19,16 @@ import com.facebook.FacebookSdk;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String URL = "http://78.47.187.129/vmYvn5rS?offer={bundle_id}&uuid={uuid}&creative_id={bundle_id}&ad_campaign_id={bundle_id}&source={bundle_id}";
+    public static final String BASE_URL = "http://78.47.187.129/vmYvn5rS?offer={bundle_id}&uuid={uuid}&creative_id={bundle_id}&ad_campaign_id={bundle_id}&source={bundle_id}";
 
     private WebView webView;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initProgressDialog();
 
         FacebookSdk.setApplicationId(String.valueOf(R.string.facebook_app_id));
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         noConnectionAlert(hasConnection(this));
         setCookie();
 
-        webView.loadUrl(URL);
+        webView.loadUrl(BASE_URL);
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -45,10 +46,13 @@ public class MainActivity extends AppCompatActivity {
         WebSettings webViewSettings = webView.getSettings();
         webViewSettings.setJavaScriptEnabled(true);
         webViewSettings.setJavaScriptCanOpenWindowsAutomatically(true);
-        ProgressBar progressBar = findViewById(R.id.progress_bar);
-//        progressBar.setIndeterminate(true);
-        progressBar.setVisibility(View.VISIBLE);
-        webView.setWebViewClient(new MyWebViewClient(progressBar));
+        webView.setWebViewClient(new MyWebViewClient(progressDialog));
+    }
+
+    private void initProgressDialog() {
+        progressDialog = new ProgressDialog(this,ProgressDialog.THEME_HOLO_DARK);
+        progressDialog.setTitle("Please wait");
+        progressDialog.setMessage("Loading...");
     }
 
     private void setCookie() {

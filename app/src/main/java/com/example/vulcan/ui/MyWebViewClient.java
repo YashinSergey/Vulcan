@@ -1,21 +1,20 @@
 package com.example.vulcan.ui;
 
 import android.annotation.TargetApi;
+import android.app.ProgressDialog;
 import android.os.Build;
-import android.view.View;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
 
 
 public class MyWebViewClient extends WebViewClient {
 
-    private ProgressBar progressBar;
+    private ProgressDialog progressDialog;
 
-    public MyWebViewClient(ProgressBar progressBar) {
-        this.progressBar = progressBar;
-        progressBar.setVisibility(View.VISIBLE);
+    public MyWebViewClient(ProgressDialog progressDialog) {
+        this.progressDialog = progressDialog;
+        progressDialog.show();
     }
 
     @SuppressWarnings("deprecation") @Override
@@ -32,8 +31,10 @@ public class MyWebViewClient extends WebViewClient {
 
     @Override
     public void onPageFinished(WebView view, String url) {
+        if (progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
         super.onPageFinished(view, url);
-        progressBar.setVisibility(View.GONE);
     }
 
     @Override
