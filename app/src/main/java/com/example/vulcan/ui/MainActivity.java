@@ -3,11 +3,13 @@ package com.example.vulcan.ui;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
@@ -46,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
         WebSettings webViewSettings = webView.getSettings();
         webViewSettings.setJavaScriptEnabled(true);
         webViewSettings.setJavaScriptCanOpenWindowsAutomatically(true);
-        webView.setWebViewClient(new MyWebViewClient(progressDialog));
+        webView.setWebViewClient(new MyWebViewClient(progressDialog, this, this));
+        webView.setWebChromeClient(new WebChromeClient());
     }
 
     private void initProgressDialog() {
@@ -88,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
     }
 
-    public static boolean hasConnection(final Context context) {
+    public boolean hasConnection(final Context context) {
         ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
         assert cm != null;
         NetworkInfo wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
