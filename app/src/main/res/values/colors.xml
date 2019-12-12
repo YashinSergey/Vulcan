@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="orange">#ff5722</color>
+    <color name="cinnabar">#e64a19</color>
+    <color name="free_speech_magenta">#e040fb</color>
+
+    <color name="coral">#5677fc</color>
+    <color name="navy_blue">#455ede</color>
+    <color name="islamic_green">#5af158</color>
+
+    <color name="ironstone">#795548</color>
+    <color name="very_dark_brown">#5D4037</color>
+</resources>
