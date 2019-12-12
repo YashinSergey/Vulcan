@@ -37,7 +37,7 @@
     <style name="BlueTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/coral</item>
         <item name="colorPrimaryDark">@color/navy_blue</item>
-        <item name="colorAccent">@color/islamic_green</item>
+        <item name="colorAccent">@color/red</item>
     </style>
     <style name="BlueTheme.NoActionBar">
         <item name="windowActionBar">false</item>
