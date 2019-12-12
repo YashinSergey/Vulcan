@@ -34,7 +34,6 @@ public class MyWebViewClient extends WebViewClient {
     @TargetApi(Build.VERSION_CODES.N) @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
         if (request.getUrl().toString().equals("fail")) {
-            Snackbar.make(view, "shouldOverrideUrlLoading", Snackbar.LENGTH_SHORT).show();
             Intent intent = new Intent(context, RegistrationActivity.class);
             activity.startActivity(intent);
         }
