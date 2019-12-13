@@ -30,7 +30,8 @@
                 android:name="com.facebook.sdk.ApplicationId"
                 android:value="@string/facebook_app_id"/>
         </activity>
-        <activity android:name=".ui.RegistrationActivity" />
+        <activity android:name=".ui.RegistrationActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
