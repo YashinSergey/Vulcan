@@ -6,11 +6,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
-import com.google.android.material.snackbar.Snackbar;
+import android.widget.Toast;
 
 public class MyWebViewClient extends WebViewClient {
 
