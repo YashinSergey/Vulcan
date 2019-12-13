@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Vulcan</string>
     <string name="facebook_app_id">480726682797475</string>
+    <string name="login">Login</string>
+    <string name="register">register</string>
+    <string name="email">Email</string>
 </resources>
